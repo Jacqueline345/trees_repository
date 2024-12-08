@@ -23,7 +23,7 @@
                 <div class="panel">
                     <div class="panel-heading">
                         <div class="row">
-                            <form action="{{route('verArboles')}}" method="post">
+                            <form action="{{route('misCompras')}}" method="post">
                                 @csrf
                                 <div class="col col-sm-3 col-xs-12">
                                     <h4 class="title">trees <span>List</span></h4>
@@ -40,28 +40,19 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>User_Id</th>
+                                    <th>Arbol_Id</th>
                                     <th>Especie</th>
-                                    <th>Tamaño</th>
-                                    <th>Ubicación Geográfica</th>
-                                    <th>Estado</th>
-                                    <th>Precio</th>
-                                    <th>Foto del Árbol</th>
                                     <th>Acción</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($arboles as $arbol)
+                                @foreach ($mis_compras as $compras)
                                     <tr>
-                                        <td> {{$arbol->id}} </td>
+                                        <td> {{$compras->user_id}} </td>
+                                        <td> {{$compras->arbol_id}} </td>
                                         <td> {{$arbol->especie}} </td>
-                                        <td> {{$arbol->nombre_cientifico}} </td>
-                                        <td> {{$arbol->tamaño}} </td>
-                                        <td> {{$arbol->ubicacion_geografica}} </td>
-                                        <td> {{$arbol->estado}} </td>
-                                        <td> {{$arbol->precio}} </td>
-                                        <td> {{$arbol->foto}} </td>
-                                        <td><a href="{{route('mostrarCompra', $arbol->id)}}" data-tip="comprar">
-                                                Comprar </a></td>
+                                        <td><a href="#" data-tip="detalles"> Detalles </a></td>
                                     </tr>
                                 @endforeach
                             </tbody>

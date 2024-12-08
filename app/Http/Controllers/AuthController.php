@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Compra;
 use Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -48,5 +49,13 @@ class AuthController extends Controller
     }
     public function home (){
         return view('dashboard/home');
+    }
+    public function compras(){
+        return $this->hasMany(Compra::class);
+    }
+    public function misCompras()
+    {
+        $compras = Auth::user()->compras;
+        return view ('/compras/mis_compras', compact('mis_compras'));
     }
 }

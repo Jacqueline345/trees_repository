@@ -14,6 +14,10 @@ Route::middleware("auth")->group(function(){
     Route::get('/logout',[App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
     Route::get('/trees',[App\Http\Controllers\TreesController::class, 'index'])->name('trees');
     Route::post('/verArboles',[App\Http\Controllers\TreesController::class, 'verArboles'])->name('verArboles');
+    Route::get('/comprar/{id}',[App\Http\Controllers\ComprarController::class, 'mostrarCompra'])->name('mostrarCompra');
+    Route::post('/comprar',[App\Http\Controllers\ComprarController::class,'comprar'])->name('comprar');
+    Route::get('/mis_compras',[App\Http\Controllers\AuthController::class, 'mis_compras'])->name('mis_compras');
+    Route::post('/mis_compras', [App\Http\Controllers\AuthController::class, 'misCompras'])->name('misCompras');
 });
 
 
