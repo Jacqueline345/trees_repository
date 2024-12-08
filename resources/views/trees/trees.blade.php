@@ -14,7 +14,8 @@
 
 </head>
 
-<body>
+<form>
+    @include('/inc/header')
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css /> -->
     <div class="container">
         <div class="row">
@@ -22,14 +23,16 @@
                 <div class="panel">
                     <div class="panel-heading">
                         <div class="row">
-                            <div class="col col-sm-3 col-xs-12">
-                                <h4 class="title">trees <span>List</span></h4>
-                            </div>
-                            <div class="col-sm-9 col-xs-12 text-right">
-                                <div class="btn_group">
-                                    <input type="text" class="form-control" placeholder="Search">
+                            <form action="{{route('verArboles')}}" method="post">
+
+                                <div class="col col-sm-3 col-xs-12">
+                                    <h4 class="title">trees <span>List</span></h4>
                                 </div>
-                            </div>
+                                <div class="col-sm-9 col-xs-12 text-right">
+                                    <div class="btn_group">
+                                        <input type="text" class="form-control" placeholder="Search">
+                                    </div>
+                                </div>
                         </div>
                     </div>
                     <div class="panel-body table-responsive">
@@ -47,21 +50,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <ul class="action-list">
-                                            <li><a href="#" data-tip="comprar"><i class="fa fa-edit"></i> Comprar </a>
-                                            </li>
-                                        </ul>
-                                    </td>
-                                </tr>
+                                @foreach ($arboles as $arbol)
+                                    <tr>
+                                        <td> {{$arbol->id}} </td>
+                                        <td> {{$arbol->especie}} </td>
+                                        <td> {{$arbol->nombre_cientifico}} </td>
+                                        <td> {{$arbol->tamaño}} </td>
+                                        <td> {{$arbol->ubicacion_geografica}} </td>
+                                        <td> {{$arbol->estado}} </td>
+                                        <td> {{$arbol->precio}} </td>
+                                        <td> {{$arbol->foto}} </td>
+                                        <td><a href="#" data-tip="comprar"> Comprar </a></td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -69,15 +70,16 @@
             </div>
         </div>
     </div>
-</div>
-    <!-- Bootstrap JavaScript Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-        crossorigin="anonymous"></script>
+    </div>
+</form>
+<!-- Bootstrap JavaScript Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+    integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>

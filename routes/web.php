@@ -12,6 +12,8 @@ Route::middleware("guest")->group(function(){
 Route::middleware("auth")->group(function(){
     Route::get('/home',[App\Http\Controllers\AuthController::class, 'home'])->name('home');
     Route::get('/logout',[App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
+    Route::get('/trees',[App\Http\Controllers\TreesController::class, 'index'])->name('trees');
+    Route::post('/verArboles',[App\Http\Controllers\TreesController::class, 'verArboles'])->name('verArboles');
 });
 
 
