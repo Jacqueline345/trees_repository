@@ -25,7 +25,7 @@
                             <div class="card-body p-5">
                                 <h2 class="text-uppercase text-center mb-5">Create an account</h2>
 
-                                <form action="{{route('register')}}" method="post">
+                                <form action="{{route('registrar')}}" method="post">
                                     @csrf
                                     <div data-mdb-input-init class="form-outline mb-4">
                                         <input type="text" id="form3Example1cg" name="name" class="form-control form-control-lg" />
@@ -43,7 +43,7 @@
                                     </div>
 
                                     <div data-mdb-input-init class="form-outline mb-4">
-                                        <input type="email" id="form3Example3cg" name="username" class="form-control form-control-lg" />
+                                        <input type="email" id="form3Example3cg" name="email" class="form-control form-control-lg" />
                                         <label class="form-label" for="form3Example3cg">Your Email</label>
                                     </div>
 

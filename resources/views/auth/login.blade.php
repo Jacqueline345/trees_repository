@@ -26,17 +26,17 @@
 
                     <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
 
-                        <form action="{{route('login')}}" method="post" style="width: 23rem;">
+                        <form action="{{route('logear')}}" method="post" style="width: 23rem;">
                             @csrf
                             <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Log in</h3>
 
                             <div data-mdb-input-init class="form-outline mb-4">
-                                <input type="email" id="form2Example18" class="form-control form-control-lg" placeholder="Ingresa tu correo" />
+                                <input type="email" id="form2Example18" name="email" class="form-control form-control-lg" placeholder="Ingresa tu correo" />
                                 <label class="form-label" for="form2Example18">Email address</label>
                             </div>
 
                             <div data-mdb-input-init class="form-outline mb-4">
-                                <input type="password" id="form2Example28" class="form-control form-control-lg" placeholder="Ingresa tu contraseña" />
+                                <input type="password" id="form2Example28" name="password" class="form-control form-control-lg" placeholder="Ingresa tu contraseña" />
                                 <label class="form-label" for="form2Example28">Password</label>
                             </div>
 
