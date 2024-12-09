@@ -16,7 +16,6 @@
     <div class="container my-5">
         <div class="jumbotron text-center bg-success text-white">
             <h1 class="display-4">Compra de Árboles</h1>
-            <p class="lead">Si deseas comprar, actualiza la información y luego completa la compra.</p>
             <hr class="my-4">
         </div>
 

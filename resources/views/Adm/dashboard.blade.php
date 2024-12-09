@@ -3,7 +3,7 @@
 @section('titulo_pagina', 'adminDashboard')
 
 @section('contenido')
-<form action="dashboard" method="post">   
+<form action="{{route('dashboard')}}" method="post">   
 <div class="container my-5">
     <h1 class="text-center mb-4">Dashboard del Administrador</h1>
 
@@ -29,7 +29,7 @@
     <!-- Estadísticas -->
     <div class="row text-center">
         <div class="col-md-4">
-            <a href="{{ route('admin.friends') }}" class="card text-white bg-info mb-3 text-decoration-none shadow-sm">
+            <a href="{{ route('dashboard') }}" class="card text-white bg-info mb-3 text-decoration-none shadow-sm">
                 <div class="card-body">
                     <h5 class="card-title">Amigos Registrados</h5>
                     <p class="card-text display-4">{{ $friendsCount }}</p>
@@ -56,7 +56,7 @@
 
     <!-- Botón agregar árbol -->
     <div class="text-center my-4">
-        <a href="{{ route('admin.addTree') }}" class="btn btn-primary btn-lg">Agregar Nuevo Árbol</a>
+        <a href="#" class="btn btn-primary btn-lg">Agregar Nuevo Árbol</a>
     </div>
 
     <!-- Tabla de árboles -->
@@ -95,9 +95,9 @@
                                 @endif
                             </td>
                             <td>
-                                <a href="{{ route('admin.editTree', $tree->id) }}" 
+                                <a href="#" 
                                    class="btn btn-warning btn-sm">Editar</a>
-                                <form action="{{ route('admin.deleteTree', $tree->id) }}" method="POST" 
+                                <form action="" method="POST" 
                                       class="d-inline">
                                     @csrf
                                     @method('DELETE')
