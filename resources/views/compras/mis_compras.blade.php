@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Trees</title>
+    <title>My Shopping</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -23,10 +23,10 @@
                 <div class="panel">
                     <div class="panel-heading">
                         <div class="row">
-                            <form action="{{route('misCompras')}}" method="post">
+                            <form action="verCompras" method="post">
                                 @csrf
                                 <div class="col col-sm-3 col-xs-12">
-                                    <h4 class="title">trees <span>List</span></h4>
+                                    <h4 class="title">Shopping <span>My</span></h4>
                                 </div>
                                 <div class="col-sm-9 col-xs-12 text-right">
                                     <div class="btn_group">
@@ -41,18 +41,25 @@
                                 <tr>
                                     <th>#</th>
                                     <th>User_Id</th>
-                                    <th>Arbol_Id</th>
                                     <th>Especie</th>
+                                    <th>Nombre cientifico </th>
                                     <th>Acción</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($mis_compras as $compras)
+                                @foreach ($compras as $compra)
                                     <tr>
-                                        <td> {{$compras->user_id}} </td>
-                                        <td> {{$compras->arbol_id}} </td>
-                                        <td> {{$arbol->especie}} </td>
-                                        <td><a href="#" data-tip="detalles"> Detalles </a></td>
+                                        <td> {{$compra->id}}</td>
+                                        <td> {{$compra->user_id}} </td>
+                                        <td> {{$compra->especie}} </td>
+                                        <td> {{$compra->nombre_cientifico}} </td>
+                                        <td><a href="{{ route('compra.detalles', ['id' => $compra->id]) }}"
+                                                class="btn btn-primary btn-sm">Ver Detalles</a>
+                                        </td>
+                                        <td></td>
+                                        <td><a href="{{ route('compra.history', ['id' => $compra->id]) }}"
+                                                class="btn btn-primary btn-sm"> Ver historial </a>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
