@@ -47,6 +47,21 @@ class AuthController extends Controller
             //autenticar como usuario
             if(Auth::guard('web')-> attempt($credenciales)){
                 return to_route('home');//redirige al home si es usuario
+        if (Auth::attempt($credenciales)) {
+            // Verificamos si el usuario está autenticado correctamente
+            if (auth()->check()) {
+                $role = auth()->user()->role;
+
+                // Si el rol del usuario es 'amigo'
+                if ($role === 'amigo') {
+                    return redirect()->route('home');
+                }
+                // Si el rol del usuario es 'admin'
+                else if ($role === 'admin') {
+                    return redirect()->route('dashboard');
+                } else if ($role === 'operador'){
+                    return redirect()->route('operadorDash');
+                }
             }
         }
         //si ninguna autenticación es exitosa

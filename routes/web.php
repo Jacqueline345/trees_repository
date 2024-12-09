@@ -26,6 +26,7 @@ Route::middleware("auth")->group(function(){
     Route::get('/compras/history',[App\Http\Controllers\HistoryControler::class,'history'])->name('history');
     Route::get('/dashboard', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('dashboard');
     Route::post('/dashboard',[App\Http\Controllers\AdminController::class,'dashboard'])->name('dashboard');
+    Route::get('/operadorDash', [App\Http\Controllers\OperadorController::class, 'dash']);
 });
 
 Route::middleware("auth:admin")->group(function(){

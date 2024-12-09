@@ -52,6 +52,8 @@ class LoginController extends Controller
                     return "/home"; // Redirige al home si es 'amigo'
                 } elseif ($role === 'admin') {
                     return "/dashboard"; // Redirige al dashboard de administrador
+                } elseif ($role==='operador') {
+                    return "/operadorDash";
                 } else {
                     \Auth::logout(); // Desloguea al usuario si no tiene un rol válido
                     return "/"; // Redirige a la página de inicio o login
