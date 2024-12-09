@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('address');
             $table->string('country');
             $table->string('password');
-            $table->string('role')->default('amigo');
+            $table->string('role');
             $table->rememberToken();
             $table->timestamps();
         });

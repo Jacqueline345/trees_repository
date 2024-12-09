@@ -3,15 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Trees;
 
 class AdminController extends Controller
 {
     public function dashboard(){
         $friendsCount = User::count();
-        $treesAvailableCount = Tree::where('estado', 'disponible')->count();
-        $treesSoldCount = Tree::where('estado', 'vendido')->count();
-        $trees = Tree::all();
-
+        $treesAvailableCount = Trees::where('estado', 'Disponible')->count();
+        $treesSoldCount = Trees::where('estado', 'Vendido')->count();
+        $trees = Trees::all();
+    
         return view('adminDashboard', [
             'friendsCount' => $friendsCount,
             'treesAvailableCount' => $treesAvailableCount,

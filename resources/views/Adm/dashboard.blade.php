@@ -3,6 +3,7 @@
 @section('titulo_pagina', 'adminDashboard')
 
 @section('contenido')
+<form action="dashboard" method="post">   
 <div class="container my-5">
     <h1 class="text-center mb-4">Dashboard del Administrador</h1>
 
@@ -113,4 +114,5 @@
         </div>
     </div>
 </div>
+</form>
 @endsection

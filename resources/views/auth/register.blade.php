@@ -68,6 +68,14 @@
                                             class="form-control form-control-lg" />
                                         <label class="form-label" for="form3Example4cdg">Repeat your password</label>
                                     </div>
+                                    <div data-mdb-input-init class="form-outline mb-4">
+                                    <select name="role" id="role">
+                                        <option value="amigo">Amigo</option>
+                                        <option value="operador">Operador</option>
+                                        <option value="admin">Administrador</option>
+                                    </select>
+                                    <label class="form-label" for="form3Example1cg">Role</label>
+                                    </div>
 
                                     <div class="form-check d-flex justify-content-center mb-5">
                                         <input class="form-check-input me-2" type="checkbox" value=""

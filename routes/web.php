@@ -24,9 +24,11 @@ Route::middleware("auth")->group(function(){
     Route::get('/history',[App\Http\Controllers\HistoryControler::class,'index'])->name('index');
     Route::get('/compras/history/{id}',[App\Http\Controllers\HistoryControler::class,'history'])->name('compra.history');
     Route::get('/compras/history',[App\Http\Controllers\HistoryControler::class,'history'])->name('history');
+    Route::get('/dashboard', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('dashboard');
+    Route::post('/dashboard',[App\Http\Controllers\AdminController::class,'dashboard'])->name('dashboard');
 });
 
 Route::middleware("auth:admin")->group(function(){
-    Route::get('/adminDashboard', [App\Http\Controllers\AuthController::class, 'adminDashboard'])->name('adminDashboard');
+    Route::get('/adminDashboard', [App\Http\Controllers\AdminController::class, 'adminDashboard'])->name('adminDashboard');
 });
 
