@@ -54,6 +54,8 @@ class AuthController extends Controller
                 // Si el rol del usuario es 'admin'
                 else if ($role === 'admin') {
                     return redirect()->route('dashboard');
+                } else if ($role === 'operador'){
+                    return redirect()->route('operadorDash');
                 }
             }
         } else {
