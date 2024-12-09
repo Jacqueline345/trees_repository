@@ -36,11 +36,21 @@ class AuthController extends Controller
             'password' => $request->password
         ];
 
-        if(Auth::attempt($credenciales)){
-           return to_route('home');
-        } else {
-            return to_route('login');
+        //verificar si es el correo del admin
+        $admin = \DB::table('admin')->where('email', $request->email)->first();
+        if($admin){
+            //autenticar como admin
+            if(Auth::guard('admin')->attempt($credenciales)){
+                return to_route('adminDashboard');//redirige al dashboard si es admin
+            }
+        }else{
+            //autenticar como usuario
+            if(Auth::guard('web')-> attempt($credenciales)){
+                return to_route('home');//redirige al home si es usuario
+            }
         }
+        //si ninguna autenticación es exitosa
+        return to_route('login')->withErrors(['message' => 'Credenciales inválidas']);
     }
     public function logout(){
         Session::flush();
@@ -57,5 +67,8 @@ class AuthController extends Controller
     {
         $compras = Auth::user()->compras;
         return view ('/compras/mis_compras', compact('mis_compras'));
+    }
+    public function adminDashboard(){
+        return view(admin/adminDashboard);
     }
 }

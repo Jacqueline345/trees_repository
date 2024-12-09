@@ -20,4 +20,7 @@ Route::middleware("auth")->group(function(){
     Route::post('/mis_compras', [App\Http\Controllers\AuthController::class, 'misCompras'])->name('misCompras');
 });
 
+Route::middleware("auth:admin")->group(function(){
+    Route::get('/adminDashboard', [App\Http\Controllers\AuthController::class, 'adminDashboard'])->name('adminDashboard');
+});
 
