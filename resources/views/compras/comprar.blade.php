@@ -29,6 +29,11 @@
                 <input id="especie" class="form-control" type="text" name="especie" value="{{$arbol->especie}}"
                     readonly>
             </div>
+            <div class="form-group">
+                <label for="nombre_cientifico"> Nombre cientifico</label>
+                <input id="nombre_cientifico" class="form-control" type="text" name="nombre_cientifico" value="{{$arbol->nombre_cientifico}}"
+                    readonly>
+            </div>
 
             <!-- Tamaño -->
             <div class="form-group">
@@ -58,13 +63,14 @@
             <!-- Foto -->
             <div class="form-group text-center">
                 <label for="foto">Foto</label>
-                @if (isset($arbol['foto']) && $arbol['foto'])
-                    <img id="foto" class="img-fluid rounded shadow mt-2" src="{{ asset($arbol['foto']) }}"
+                @if (isset($arbol->foto) && $arbol->foto)
+                    <img id="foto" class="img-fluid rounded shadow mt-2" src="{{ asset($arbol->foto) }}"
                         alt="Foto del árbol">
                 @else
                     <p class="text-muted">No hay foto disponible</p>
                 @endif
             </div>
+
 
             <!-- Botones de Acción -->
             <div class="d-flex justify-content-center my-4">

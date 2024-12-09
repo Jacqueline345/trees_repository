@@ -33,6 +33,9 @@
                 <li class="nav-item">
                     <a href="{{route('trees')}}" class="nav-link">Trees</a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{route('mis_compras')}}" class="nav-link">My Shopping</a>
+                </li>
             </ul>
         </div>
     </nav>

@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Client\ResponseSequence;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware("guest")->group(function(){
@@ -16,8 +17,13 @@ Route::middleware("auth")->group(function(){
     Route::post('/verArboles',[App\Http\Controllers\TreesController::class, 'verArboles'])->name('verArboles');
     Route::get('/comprar/{id}',[App\Http\Controllers\ComprarController::class, 'mostrarCompra'])->name('mostrarCompra');
     Route::post('/comprar',[App\Http\Controllers\ComprarController::class,'comprar'])->name('comprar');
-    Route::get('/mis_compras',[App\Http\Controllers\AuthController::class, 'mis_compras'])->name('mis_compras');
-    Route::post('/mis_compras', [App\Http\Controllers\AuthController::class, 'misCompras'])->name('misCompras');
+    Route::get('/mis_compras',[App\Http\Controllers\MisComprasController::class, 'index'])->name('mis_compras');
+    Route::post('/verCompras',[App\Http\Controllers\MisComprasController::class,'verCompras'])->name('verCompras');
+    Route::get('/detalle',[App\Http\Controllers\DetallesController::class,'index'])->name('index');
+    Route::get('/compra/detalles/{id}', [App\Http\Controllers\DetallesController::class, 'verDetalles'])->name('compra.detalles');
+    Route::get('/history',[App\Http\Controllers\HistoryControler::class,'index'])->name('index');
+    Route::get('/compras/history/{id}',[App\Http\Controllers\HistoryControler::class,'history'])->name('compra.history');
+    Route::get('/compras/history',[App\Http\Controllers\HistoryControler::class,'history'])->name('history');
 });
 
 

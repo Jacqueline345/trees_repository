@@ -11,13 +11,16 @@ use Session;
 
 class AuthController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         return view("/auth/login");
     }
-    public function register(){
+    public function register()
+    {
         return view("/auth/register");
     }
-    public function registrar(Request $request){
+    public function registrar(Request $request)
+    {
         $item = new User();
         $item->name = $request->name;
         $item->lastname = $request->lastname;
@@ -30,32 +33,31 @@ class AuthController extends Controller
         return to_route('login');
 
     }
-    public function logear (Request $request){
+    public function logear(Request $request)
+    {
         $credenciales = [
             'email' => $request->email,
             'password' => $request->password
         ];
 
-        if(Auth::attempt($credenciales)){
-           return to_route('home');
+        if (Auth::attempt($credenciales)) {
+            return to_route('home');
         } else {
             return to_route('login');
         }
     }
-    public function logout(){
+    public function logout()
+    {
         Session::flush();
         Auth::logout();
         return to_route('login');
     }
-    public function home (){
+    public function home()
+    {
         return view('dashboard/home');
     }
-    public function compras(){
-        return $this->hasMany(Compra::class);
-    }
-    public function misCompras()
+    public function compras()
     {
-        $compras = Auth::user()->compras;
-        return view ('/compras/mis_compras', compact('mis_compras'));
+        return $this->hasMany(Compra::class);
     }
 }
