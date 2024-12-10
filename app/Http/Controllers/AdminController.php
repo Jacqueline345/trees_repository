@@ -17,6 +17,8 @@ class AdminController extends Controller
         $treesSoldCount = Trees::where('estado', 'Vendido')->count();
         // Obtener todos los árboles
         $trees = Trees::all();
+        //Obtener árboles disponibles
+        $treesAvailable = Trees::where('estado', 'Disponible')->get();
 
         // Pasar las variables a la vista
         return view('Adm/dashboard', [
@@ -24,6 +26,7 @@ class AdminController extends Controller
             'treesAvailableCount' => $treesAvailableCount,
             'treesSoldCount' => $treesSoldCount,
             'trees' => $trees,
+            'treesAvailable' => $treesAvailable,
         ]);
     }
 }

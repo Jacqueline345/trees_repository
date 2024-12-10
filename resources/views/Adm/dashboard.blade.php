@@ -35,6 +35,9 @@
                 <li class="nav-item">
                     <a href="{{route('dashboard')}}" class="nav-link">Dashboard</a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{route('dashboard')}}" class="nav-link">Administración de Usuarios</a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -100,7 +103,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($trees as $arbol)
+                        @foreach ($treesAvailable as $arbol)
                             <tr>
                                 <td> {{$arbol->especie}} </td>
                                 <td> {{$arbol->nombre_cientifico}} </td>

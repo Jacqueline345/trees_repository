@@ -16,6 +16,9 @@ class Trees extends Model
         'estado',
         'precio',
         'foto',
-        'fecha_actualizada',
     ];
+
+    protected function casts(): array{
+        return['fecha_actualizada' => 'datetime'];
+    }
 }

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('estado');
             $table->string('precio');
             $table->string('foto')->nullable();
-            $table->timestamp('fecha_actualizada')->nullable();
+            $table->timestamps();
         });
     }
 

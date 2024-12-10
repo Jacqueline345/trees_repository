@@ -16,7 +16,7 @@
 <body>
     <!-- Formulario para Agregar un Nuevo Árbol -->
     <div class="card shadow-sm mt-5">
-        <div class="card-header bg-primary text-white text-center">
+        <div class="card-header bg-success text-white text-center">
             <h2 class="mb-0">Agregar Nuevo Árbol</h2>
         </div>
         <div class="card-body">
@@ -41,7 +41,6 @@
                         <label for="ubicacion_geografica" class="form-label fw-bold">Ubicación Geográfica</label>
                         <input type="text" class="form-control shadow-sm" id="ubicacion_geografica" name="ubicacion_geografica" placeholder="Ej. Oaxaca" required>
                     </div>
-                    
                 </div>
                 <div class="row g-3 mb-3">
                     <div class="col-md-6">
@@ -58,15 +57,18 @@
                 </div>
                 <div class="row g-3 mb-3">
                     <div class="col-md-4">
-                        <label for="foto" class="form-label fw-bold">Foto</label>
+                        <label for="foto" class="form-label fw-bold">Foto (Opcional)</label>
                         <input type="file" class="form-control shadow-sm" id="foto" name="foto" accept="image/*">
                         <small class="form-text text-muted">Formatos soportados: JPG, PNG. Tamaño máximo: 2MB.</small>
                     </div>
                 </div>
                 <div class="text-center">
-                    <button type="submit" class="btn btn-primary btn-lg shadow-sm">
+                    <button type="submit" class="btn btn-success btn-lg shadow-sm">
                         <i class="bi bi-save"></i> Guardar Árbol
                     </button>
+                    <a href="{{route('dashboard')}}" type="submit" class="btn btn-secondary btn-lg shadow-sm">
+                        <i class="bi bi-x-circle"></i> Cancelar
+                    </a>
                 </div>
             </form>
         </div>
