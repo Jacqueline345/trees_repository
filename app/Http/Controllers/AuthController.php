@@ -30,23 +30,12 @@ class AuthController extends Controller
         return to_route('login');
 
     }
-    public function logear (Request $request){
+    public function logear (Request $request)
+    {
         $credenciales = [
             'email' => $request->email,
             'password' => $request->password
         ];
-
-        //verificar si es el correo del admin
-        $admin = \DB::table('admin')->where('email', $request->email)->first();
-        if($admin){
-            //autenticar como admin
-            if(Auth::guard('admin')->attempt($credenciales)){
-                return to_route('adminDashboard');//redirige al dashboard si es admin
-            }
-        }else{
-            //autenticar como usuario
-            if(Auth::guard('web')-> attempt($credenciales)){
-                return to_route('home');//redirige al home si es usuario
         if (Auth::attempt($credenciales)) {
             // Verificamos si el usuario está autenticado correctamente
             if (auth()->check()) {
@@ -63,27 +52,35 @@ class AuthController extends Controller
                     return redirect()->route('operadorDash');
                 }
             }
+        } else {
+            // Si las credenciales no son correctas, redirige al login
+            return to_route('login');
         }
-        //si ninguna autenticación es exitosa
-        return to_route('login')->withErrors(['message' => 'Credenciales inválidas']);
+
     }
+
     public function logout(){
         Session::flush();
         Auth::logout();
         return to_route('login');
     }
+
     public function home (){
         return view('dashboard/home');
     }
+
     public function compras(){
         return $this->hasMany(Compra::class);
     }
+
     public function misCompras()
     {
         $compras = Auth::user()->compras;
         return view ('/compras/mis_compras', compact('mis_compras'));
     }
+
     public function adminDashboard(){
         return view(admin/adminDashboard);
     }
+    
 }

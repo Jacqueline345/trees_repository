@@ -1,116 +1,134 @@
-@extends('layouts.app')
+<!doctype html>
+<html lang="en">
 
-@section('titulo_pagina', 'adminDashboard')
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-@section('contenido')
-<div class="container my-5">
-    <h1 class="text-center mb-4">Dashboard del Administrador</h1>
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <link rel="stylesheet" href="{{assert('assets/style.css')}}">
 
-    <!-- Mostrar mensajes -->
-    @if(session('success_message'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ session('success_message') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.php"> My Trees </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="{{route('login')}}" class="nav-link active">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('register')}}" class="nav-link">Signup</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('logout')}}" class="nav-link">Logout</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('dashboard')}}" class="nav-link">Dashboard</a>
+                </li>
+            </ul>
         </div>
-    @endif
+    </nav>
+    <div class="container my-5">
+        <h1 class="text-center mb-4">Dashboard del Administrador</h1>
 
-    @if(session('error_message'))
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            {{ session('error_message') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endif
-
-    <!-- Estadísticas -->
-    <div class="row text-center">
-        <div class="col-md-4">
-            <a href="{{ route('dashboard') }}" class="card text-white bg-info mb-3 text-decoration-none shadow-sm">
-                <div class="card-body">
-                    <h5 class="card-title">Amigos Registrados</h5>
-                    <p class="card-text display-4">{{ $friendsCount }}</p>
+        <!-- Estadísticas -->
+        <div class="row text-center">
+            <!-- Tarjeta: Amigos Registrados -->
+            <div class="col-md-4 mb-3">
+                <div class="card bg-info shadow-sm h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Amigos Registrados</h5>
+                        <p class="card-text display-4"><strong>{{$friendsCount}}</strong></p>
+                    </div>
                 </div>
-            </a>
-        </div>
-        <div class="col-md-4">
-            <div class="card text-white bg-success mb-3 shadow-sm">
-                <div class="card-body">
-                    <h5 class="card-title">Árboles Disponibles</h5>
-                    <p class="card-text display-4">{{ $treesAvailableCount }}</p>
+            </div>
+
+            <!-- Tarjeta: Árboles Disponibles -->
+            <div class="col-md-4 mb-3">
+                <div class="card bg-success shadow-sm h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Árboles Disponibles</h5>
+                        <p class="card-text display-4"><strong>{{$treesAvailableCount}}</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta: Árboles Vendidos -->
+            <div class="col-md-4 mb-3">
+                <div class="card bg-danger shadow-sm h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Árboles Vendidos</h5>
+                        <p class="card-text display-4"><strong>{{$treesSoldCount}}</strong></p>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card text-white bg-danger mb-3 shadow-sm">
-                <div class="card-body">
-                    <h5 class="card-title">Árboles Vendidos</h5>
-                    <p class="card-text display-4">{{ $treesSoldCount }}</p>
-                </div>
+
+        <!-- Botón para ver amigos y añadir un nuevo árbol -->
+        <div class="text-center my-4">
+            <a href="#" class="btn btn-warning btn-lg">Ver Amigos Registrados</a>
+            <a href="#" class="btn btn-info btn-lg">Agregar Nuevo Árbol</a>
+        </div>
+
+        <!-- Tabla de Árboles con Estado -->
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h2 class="mb-0">Listado de Árboles Disponibles</h2>
             </div>
-        </div>
-    </div>
-
-    <!-- Botón agregar árbol -->
-    <div class="text-center my-4">
-        <a href="{{ route('admin.addTree') }}" class="btn btn-primary btn-lg">Agregar Nuevo Árbol</a>
-    </div>
-
-    <!-- Tabla de árboles -->
-    <div class="card shadow-sm">
-        <div class="card-header bg-primary text-white">
-            <h2 class="mb-0">Listado de Árboles</h2>
-        </div>
-        <div class="card-body p-0">
-            <table class="table table-striped table-hover m-0">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>Especie</th>
-                        <th>Nombre Científico</th>
-                        <th>Tamaño</th>
-                        <th>Ubicación</th>
-                        <th>Estado</th>
-                        <th>Foto</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($trees as $tree)
+            <div class="card-body p-0">
+                <table class="table table-striped table-hover m-0">
+                    <thead class="thead-dark">
                         <tr>
-                            <td>{{ $tree->especie }}</td>
-                            <td>{{ $tree->nombre_cientifico }}</td>
-                            <td>{{ $tree->tamaño }}</td>
-                            <td>{{ $tree->ubicacion_geografica }}</td>
-                            <td>{{ $tree->estado }}</td>
-                            <td>
-                                @if ($tree->foto)
-                                    <img src="{{ asset('uploads/' . $tree->foto) }}" 
-                                         alt="Imagen de {{ $tree->especie }}" 
-                                         style="max-width: 100px; max-height: 100px;">
-                                @else
-                                    Sin imagen
-                                @endif
-                            </td>
-                            <td>
-                                <a href="{{ route('admin.editTree', $tree->id) }}" 
-                                   class="btn btn-warning btn-sm">Editar</a>
-                                <form action="{{ route('admin.deleteTree', $tree->id) }}" method="POST" 
-                                      class="d-inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm" 
-                                            onclick="return confirm('¿Estás seguro de eliminar este árbol?');">
-                                        Eliminar
-                                    </button>
-                                </form>
-                            </td>
+                            <th>Especie</th>
+                            <th>Nombre Científico</th>
+                            <th>Tamaño</th>
+                            <th>Ubicación Geográfica</th>
+                            <th>Estado</th>
+                            <th>Foto</th>
+                            <th>Acciones</th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach ($arboles as $arbol)
+                            <tr>
+                                <td> {{$arbol->id}} </td>
+                                <td> {{$arbol->especie}} </td>
+                                <td> {{$arbol->nombre_cientifico}} </td>
+                                <td> {{$arbol->tamaño}} </td>
+                                <td> {{$arbol->ubicacion_geografica}} </td>
+                                <td> {{$arbol->estado}} </td>
+                                <td> {{$arbol->precio}} </td>
+                                <td> {{$arbol->foto}} </td>
+                                <td><a href="{{route('mostrarCompra', $arbol->id)}}" data-tip="comprar">Comprar </a></td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
+
+        <!-- Bootstrap JavaScript Libraries -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous">
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+            crossorigin="anonymous">
+        </script>
     </div>
-</div>
-@endsection
+</body>
+
+
+</html>
