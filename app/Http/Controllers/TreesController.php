@@ -38,7 +38,7 @@ class TreesController extends Controller
         ]);
 
         // Crear un nuevo árbol
-        $tree = new Tree();
+        $tree = new Trees();
         $tree->especie = $request->input('especie');
         $tree->nombre_cientifico = $request->input('nombre_cientifico');
         $tree->tamaño = $request->input('tamaño');
