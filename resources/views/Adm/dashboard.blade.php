@@ -82,7 +82,7 @@
 
         <!-- Tabla de Árboles con Estado -->
         <div class="card shadow-sm">
-            <div class="card-header bg-primary text-white">
+            <div class="card-header bg-info">
                 <h2 class="mb-0">Listado de Árboles Disponibles</h2>
             </div>
             <div class="card-body p-0">
@@ -94,14 +94,14 @@
                             <th>Tamaño</th>
                             <th>Ubicación Geográfica</th>
                             <th>Estado</th>
+                            <th>Precio</th>
                             <th>Foto</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($arboles as $arbol)
+                        @foreach ($trees as $arbol)
                             <tr>
-                                <td> {{$arbol->id}} </td>
                                 <td> {{$arbol->especie}} </td>
                                 <td> {{$arbol->nombre_cientifico}} </td>
                                 <td> {{$arbol->tamaño}} </td>
@@ -109,7 +109,10 @@
                                 <td> {{$arbol->estado}} </td>
                                 <td> {{$arbol->precio}} </td>
                                 <td> {{$arbol->foto}} </td>
-                                <td><a href="{{route('mostrarCompra', $arbol->id)}}" data-tip="comprar">Comprar </a></td>
+                                <td>
+                                    <a href="{{route('mostrarCompra', $arbol->id)}}" data-tip="comprar" class="btn btn-warning btn-sm">Editar</a>
+                                    <a href="{{route('mostrarCompra', $arbol->id)}}" data-tip="comprar" class="btn btn-danger btn-sm">Eliminar</a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
