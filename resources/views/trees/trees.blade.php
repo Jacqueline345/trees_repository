@@ -36,7 +36,7 @@
                         </div>
                     </div>
                     <div class="card shadow-sm">
-                        <dic class="card-header bg-success">
+                        <div class="card-header bg-success">
                             <h2 class="mb-0 text-white">Listado de Árboles Disponibles</h2>
                         </div>
                         <div class="card-body p-0">
