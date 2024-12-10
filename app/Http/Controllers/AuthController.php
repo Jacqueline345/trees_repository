@@ -18,6 +18,7 @@ class AuthController extends Controller
         return view("/auth/register");
     }
     public function registrar(Request $request){
+        
         $item = new User();
         $item->name = $request->name;
         $item->lastname = $request->lastname;
