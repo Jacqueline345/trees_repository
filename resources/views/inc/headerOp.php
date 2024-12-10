@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Historial</title>
+    <title>Header</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -13,30 +13,25 @@
 </head>
 
 <body>
-    <form action="{{route('history')}}" method="post">
-        <div class="container mt-4">
-            <h1 class="mb-4">Historial</h1>
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Tamaño</th>
-                        <th>Fecha Actualizada</th>
-                        <th>Foto</th>
-                    </tr>
-                </thead>
-                <tbody>
-                        <tr>
-                            <td> {{$compras->id }} </td>
-                            <td>{{ $compras->tamaño }}</td>
-                            <td>{{ $compras->created_at }}</td>
-                            <td><img src="{{ $compras->foto }}" alt="Foto" width="100"></td>
-                        </tr>
-                </tbody>
-            </table>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="{{route('login')}}" class="nav-link active">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('register')}}" class="nav-link">Signup</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('logout')}}" class="nav-link">Logout</a>
+                </li>
+            </ul>
         </div>
-    </form>
-
+    </nav>
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"

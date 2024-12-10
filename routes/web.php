@@ -8,7 +8,11 @@ Route::middleware("guest")->group(function(){
     Route::get('/register',[App\Http\Controllers\AuthController::class, 'register'])->name('register');
     Route::post('/registrar',[App\Http\Controllers\AuthController::class, 'registrar'])->name('registrar');
     Route::post('/logear',[App\Http\Controllers\AuthController::class, 'logear'])->name('logear');
+    Route::get('/access-denied', function(){
+        return view('access-denied');
+    })->name('access.denied');
 });
+
 
 Route::middleware("auth")->group(function(){
     Route::get('/home',[App\Http\Controllers\AuthController::class, 'home'])->name('home');
@@ -26,7 +30,11 @@ Route::middleware("auth")->group(function(){
     Route::get('/compras/history',[App\Http\Controllers\HistoryControler::class,'history'])->name('history');
     Route::get('/dashboard', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('dashboard');
     Route::post('/dashboard',[App\Http\Controllers\AdminController::class,'dashboard'])->name('dashboard');
-    Route::get('/operadorDash', [App\Http\Controllers\OperadorController::class, 'dash']);
+    Route::get('/operadorDash', [App\Http\Controllers\OperadorController::class,'dash'])->name('operadorDash');
+    Route::get('/verHistorial',[App\Http\Controllers\VerHistoryController::class, 'index'])->name('verHistorial');
+    Route::post('/Verhistory',[App\Http\Controllers\VerHistoryController::class,'Verhistory'])->name('Verhistory');
+    Route::post('/actualiza/{id}',[App\Http\Controllers\ActualizaController::class, 'mostrarCompra'])->name('mostrarCompra');
+    Route::get('/actualiza',[App\Http\Controllers\ActualizaController::class,'actualiza'])->name('actualiza');
 });
 
 Route::middleware("auth:admin")->group(function(){
