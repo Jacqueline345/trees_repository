@@ -8,27 +8,33 @@ use Illuminate\Support\Facades\DB;
 
 class ActualizaController extends Controller
 {
+    public function mostrarActualizacion($id)
+    {
+        $compras = Compra::findOrFail($id);
+
+        // Pasamos el producto a la vista
+        return view('Historial.actualiza', compact('compras'));
+
+    }
     public function store(Request $request)
     {
-        $request->validate([
-            'id' => 'required|exists:compras,id',
-            'tamaño' => 'required|string',
-            'foto' => 'required|image|max:2048',
-            'updated_at' => 'required|date',
+        // Encuentra el registro usando Eloquent
+        $compras = Compra::find($request->id);
 
-        ]);
+        // Verifica si la compra existe
+        if (!$compras) {
+            return redirect()->back()->with('error', 'Compra no encontrada.');
+        }
 
-        $imagePath = $request->file('image')->store('tree_images', 'public');
+        // Actualiza los atributos
+        $compras->tamaño = $request->tamaño;
+        $compras->foto = $request->foto;
 
-        ActualizaController::create([
-            'id' => $request->tree_id,
-            'tamaño' => $request->tamaño,
-            'foto' => $imagePath,
-            'updated_at' => $request->updated_at,
+        // Guarda los cambios
+        $compras->save();
 
-        ]);
-
-        return response()->json(['message' => 'Tree update saved successfully.']);
+        // Redirige a la ruta 'operador'
+        return to_route('operadorDash');
     }
 }
 

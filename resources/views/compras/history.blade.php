@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <form action="{{route('history')}}" method="post">
+    <form action="history" method="post">
         <div class="container mt-4">
             <h1 class="mb-4">Historial</h1>
             <table class="table table-bordered">
