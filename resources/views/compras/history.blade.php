@@ -29,7 +29,7 @@
                         <tr>
                             <td> {{$compras->id }} </td>
                             <td>{{ $compras->tamaño }}</td>
-                            <td>{{ $compras->created_at }}</td>
+                            <td>{{ $compras->updated_at }}</td>
                             <td><img src="{{ $compras->foto }}" alt="Foto" width="100"></td>
                         </tr>
                 </tbody>

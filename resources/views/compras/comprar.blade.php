@@ -21,42 +21,42 @@
 
         <form action="{{route('comprar')}}" method="post">
             @csrf
-            <input type="hidden" name="id" value="{{$arbol->id}}">
+            <input type="hidden" name="id" value="{{$arbol->id}}" required>
             <!-- Especie -->
             <div class="form-group">
                 <label for="especie">Especie</label>
                 <input id="especie" class="form-control" type="text" name="especie" value="{{$arbol->especie}}"
-                    readonly>
+                    required>
             </div>
             <div class="form-group">
                 <label for="nombre_cientifico"> Nombre cientifico</label>
                 <input id="nombre_cientifico" class="form-control" type="text" name="nombre_cientifico" value="{{$arbol->nombre_cientifico}}"
-                    readonly>
+                    required>
             </div>
 
             <!-- Tamaño -->
             <div class="form-group">
                 <label for="tamaño">Tamaño</label>
-                <input id="tamaño" class="form-control" type="text" name="tamaño" value="{{$arbol->tamaño}}" readonly>
+                <input id="tamaño" class="form-control" type="text" name="tamaño" value="{{$arbol->tamaño}}" required>
             </div>
 
             <!-- Ubicación Geográfica -->
             <div class="form-group">
                 <label for="ubicacion_geografica">Ubicación Geográfica</label>
                 <input id="ubicacion_geografica" class="form-control" type="text" name="ubicacion_geografica"
-                    value="{{$arbol->ubicacion_geografica}}" readonly>
+                    value="{{$arbol->ubicacion_geografica}}" required>
             </div>
 
             <!-- Estado -->
             <div class="form-group">
                 <label for="estado">Estado</label>
-                <input id="estado" class="form-control" type="text" name="estado" value="{{$arbol->estado}}" readonly>
+                <input id="estado" class="form-control" type="text" name="estado" value="{{$arbol->estado}}" required>
             </div>
 
             <!-- Precio -->
             <div class="form-group">
                 <label for="precio">Precio</label>
-                <input id="precio" class="form-control" type="text" name="precio" value="{{$arbol->precio}}" readonly>
+                <input id="precio" class="form-control" type="text" name="precio" value="{{$arbol->precio}}" required>
             </div>
 
             <!-- Foto -->
@@ -64,7 +64,7 @@
                 <label for="foto">Foto</label>
                 @if (isset($arbol->foto) && $arbol->foto)
                     <img id="foto" class="img-fluid rounded shadow mt-2" src="{{ asset($arbol->foto) }}"
-                        alt="Foto del árbol">
+                        alt="Foto del árbol" required>
                 @else
                     <p class="text-muted">No hay foto disponible</p>
                 @endif

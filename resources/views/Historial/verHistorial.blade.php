@@ -51,8 +51,8 @@
                                         <td> {{$compra->id}}</td>
                                         <td> {{$compra->tamaño}} </td>
                                         <td> <img src="{{ $compra->foto }}" alt="Foto" width="100"> </td>
-                                        <td> {{$compra->created_at}}</td>
-                                        <td><a href="{{ route('actualiza', ['id' => $compra->id]) }}"
+                                        <td> {{$compra->updated_at}}</td>
+                                        <td><a href="{{ route('Historial.actualiza', ['id' => $compra->id]) }}"
                                         class="btn btn-primary btn-sm">Actualiza arbol</a>
                                     </tr>
                                 @endforeach

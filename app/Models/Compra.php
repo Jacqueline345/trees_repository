@@ -21,4 +21,7 @@ class Compra extends Model
         'precio',
         'foto',
     ];
+    public function compra() {
+        return $this->belongsTo(Compra::class); 
+    }
 }

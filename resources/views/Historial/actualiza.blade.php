@@ -15,7 +15,7 @@
                 <h3 class="mb-0">Actualizar Árbol</h3>
             </div>
             <div class="card-body">
-                <form action="actualiza" method="post">
+                <form action="{{route('store')}}" method="post">
                     @csrf
                     <input type="hidden" name="id" value="{{$compras->id}}" readonly>
                     <div class="form-group">

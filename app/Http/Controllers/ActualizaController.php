@@ -8,37 +8,28 @@ use Illuminate\Support\Facades\DB;
 
 class ActualizaController extends Controller
 {
-
-    public function mostrarCompra($id)
+    public function store(Request $request)
     {
-        // Obtén el árbol por su ID
-        $compras = DB::table('compras')->where('id', $id)->first();
+        $request->validate([
+            'id' => 'required|exists:compras,id',
+            'tamaño' => 'required|string',
+            'foto' => 'required|image|max:2048',
+            'updated_at' => 'required|date',
 
-        if (!$compras) {
-            return redirect()->back()->with('error', 'Árbol no encontrado');
-        }
+        ]);
 
-        return view('/actualiza', compact('compras'));
+        $imagePath = $request->file('image')->store('tree_images', 'public');
+
+        ActualizaController::create([
+            'id' => $request->tree_id,
+            'tamaño' => $request->tamaño,
+            'foto' => $imagePath,
+            'updated_at' => $request->updated_at,
+
+        ]);
+
+        return response()->json(['message' => 'Tree update saved successfully.']);
     }
-    public function actualiza(Request $request)
-    {
-        // Encuentra el registro usando Eloquent
-        $compras = Compra::find($request->id);
-
-        // Verifica si la compra existe
-        if (!$compras) {
-            return redirect()->back()->with('error', 'Compra no encontrada.');
-        }
-
-        // Actualiza los atributos
-        $compras->tamaño = $request->tamaño;
-        $compras->foto = $request->foto;
-
-        // Guarda los cambios
-        $compras->save();
-
-        // Redirige a la ruta 'operador'
-        return to_route('operadorDash');
-    }
-
 }
+
+

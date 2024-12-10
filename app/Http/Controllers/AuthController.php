@@ -26,6 +26,7 @@ class AuthController extends Controller
         $item->address = $request->address;
         $item->country = $request->country;
         $item->password = Hash::make($request->password);
+        $item->role = $request->role;
         $item->save();
         return to_route('login');
 

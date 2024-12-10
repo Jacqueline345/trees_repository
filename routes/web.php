@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActualizaController;
 use Illuminate\Http\Client\ResponseSequence;
 use Illuminate\Support\Facades\Route;
 
@@ -33,8 +34,8 @@ Route::middleware("auth")->group(function(){
     Route::get('/operadorDash', [App\Http\Controllers\OperadorController::class,'dash'])->name('operadorDash');
     Route::get('/verHistorial',[App\Http\Controllers\VerHistoryController::class, 'index'])->name('verHistorial');
     Route::post('/Verhistory',[App\Http\Controllers\VerHistoryController::class,'Verhistory'])->name('Verhistory');
-    Route::post('/actualiza/{id}',[App\Http\Controllers\ActualizaController::class, 'mostrarCompra'])->name('mostrarCompra');
-    Route::get('/actualiza',[App\Http\Controllers\ActualizaController::class,'actualiza'])->name('actualiza');
+    Route::post('/Historial.actualiza/{id}',[App\Http\Controllers\ActualizaController::class, 'mostrarActualizacion'])->name('Historial.actualiza');
+    Route::get('/Historial.actualiza',[App\Http\Controllers\ActualizaController::class,'store'])->name('Historial.actualiza');
     Route::get('/trees', [App\Http\Controllers\TreesController::class, 'index'])->name('trees');
     Route::get('/addTree', [App\Http\Controllers\TreesController::class, 'addTree'])->name('addTree');
     Route::post('/storeTree', [App\Http\Controllers\TreesController::class, 'storeTree'])->name('storeTree');
