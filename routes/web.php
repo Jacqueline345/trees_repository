@@ -27,6 +27,9 @@ Route::middleware("auth")->group(function(){
     Route::get('/dashboard', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('dashboard');
     Route::post('/dashboard',[App\Http\Controllers\AdminController::class,'dashboard'])->name('dashboard');
     Route::get('/operadorDash', [App\Http\Controllers\OperadorController::class, 'dash']);
+    Route::get('/trees', [App\Http\Controllers\TreesController::class, 'index'])->name('trees');
+    Route::get('/addTree', [App\Http\Controllers\TreesController::class, 'addTree'])->name('addTree');
+    Route::post('/storeTree', [App\Http\Controllers\TreesController::class, 'storeTree'])->name('storeTree');
 });
 
 Route::middleware("auth:admin")->group(function(){

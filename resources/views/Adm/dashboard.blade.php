@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Title</title>
+    <title>Dashboard</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -77,7 +77,7 @@
         <!-- Botón para ver amigos y añadir un nuevo árbol -->
         <div class="text-center my-4">
             <a href="#" class="btn btn-warning btn-lg">Ver Amigos Registrados</a>
-            <a href="#" class="btn btn-info btn-lg">Agregar Nuevo Árbol</a>
+            <a href="{{route('addTree')}}" class="btn btn-info btn-lg">Agregar Nuevo Árbol</a>
         </div>
 
         <!-- Tabla de Árboles con Estado -->
