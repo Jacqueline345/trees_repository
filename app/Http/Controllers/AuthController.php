@@ -3,26 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Admin;
 use App\Models\Compra;
 use Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Session;
 
 class AuthController extends Controller
 {
-    public function index()
-    {
+    public function index() {
         return view("/auth/login");
     }
-    public function register()
-    {
+    public function register(){
         return view("/auth/register");
     }
-    public function registrar(Request $request)
-    {
+    public function registrar(Request $request){
         $item = new User();
         $item->name = $request->name;
         $item->lastname = $request->lastname;
@@ -31,12 +26,11 @@ class AuthController extends Controller
         $item->address = $request->address;
         $item->country = $request->country;
         $item->password = Hash::make($request->password);
-        $item->role = $request->role;
         $item->save();
         return to_route('login');
 
     }
-    public function logear(Request $request)
+    public function logear (Request $request)
     {
         $credenciales = [
             'email' => $request->email,
@@ -64,22 +58,29 @@ class AuthController extends Controller
         }
 
     }
-    public function logout()
-    {
+
+    public function logout(){
         Session::flush();
         Auth::logout();
         return to_route('login');
     }
-    public function home()
-    {
+
+    public function home (){
         return view('dashboard/home');
     }
-    public function compras()
-    {
+
+    public function compras(){
         return $this->hasMany(Compra::class);
     }
-    public function adminDashboard()
+
+    public function misCompras()
     {
-        return view('admin/adminDashboard');
+        $compras = Auth::user()->compras;
+        return view ('/compras/mis_compras', compact('mis_compras'));
     }
+
+    public function adminDashboard(){
+        return view(admin/adminDashboard);
+    }
+    
 }

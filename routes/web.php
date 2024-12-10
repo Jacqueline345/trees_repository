@@ -35,6 +35,9 @@ Route::middleware("auth")->group(function(){
     Route::post('/Verhistory',[App\Http\Controllers\VerHistoryController::class,'Verhistory'])->name('Verhistory');
     Route::post('/actualiza/{id}',[App\Http\Controllers\ActualizaController::class, 'mostrarCompra'])->name('mostrarCompra');
     Route::get('/actualiza',[App\Http\Controllers\ActualizaController::class,'actualiza'])->name('actualiza');
+    Route::get('/trees', [App\Http\Controllers\TreesController::class, 'index'])->name('trees');
+    Route::get('/addTree', [App\Http\Controllers\TreesController::class, 'addTree'])->name('addTree');
+    Route::post('/storeTree', [App\Http\Controllers\TreesController::class, 'storeTree'])->name('storeTree');
 });
 
 Route::middleware("auth:admin")->group(function(){

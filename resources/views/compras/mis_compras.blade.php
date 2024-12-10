@@ -21,7 +21,7 @@
         <div class="row">
             <div class="col-md-offset-1 col-md-10">
                 <div class="panel">
-                    <div class="panel-heading">
+                    <div class="panel-heading mb-4 p-3">
                         <div class="row">
                             <form action="verCompras" method="post">
                                 @csrf
@@ -35,35 +35,39 @@
                                 </div>
                         </div>
                     </div>
-                    <div class="panel-body table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>User_Id</th>
-                                    <th>Especie</th>
-                                    <th>Nombre cientifico </th>
-                                    <th>Acción</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($compras as $compra)
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-success">
+                            <h2 class="mb-0 text-white">Mis Compras</h2>
+                        </div>
+                        <div class="card-body p-0">
+                            <table class="table table-striped table-hover m-0">
+                                <thead class="thead-dark">
                                     <tr>
-                                        <td> {{$compra->id}}</td>
-                                        <td> {{$compra->user_id}} </td>
-                                        <td> {{$compra->especie}} </td>
-                                        <td> {{$compra->nombre_cientifico}} </td>
-                                        <td><a href="{{ route('compra.detalles', ['id' => $compra->id]) }}"
-                                                class="btn btn-primary btn-sm">Ver Detalles</a>
-                                        </td>
-                                        <td></td>
-                                        <td><a href="{{ route('compra.history', ['id' => $compra->id]) }}"
-                                                class="btn btn-primary btn-sm"> Ver historial </a>
-                                        </td>
+                                        <th>#</th>
+                                        <th>User_Id</th>
+                                        <th>Especie</th>
+                                        <th>Nombre cientifico </th>
+                                        <th>Acción</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @foreach ($compras as $compra)
+                                        <tr>
+                                            <td> {{$compra->id}}</td>
+                                            <td> {{$compra->user_id}} </td>
+                                            <td> {{$compra->especie}} </td>
+                                            <td> {{$compra->nombre_cientifico}} </td>
+                                            <td>
+                                                <a href="{{ route('compra.detalles', ['id' => $compra->id]) }}"
+                                                    class="btn btn-primary btn-sm">Ver Detalles</a>
+                                                <a href="{{ route('compra.history', ['id' => $compra->id]) }}"
+                                                    class="btn btn-primary btn-sm"> Ver historial </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

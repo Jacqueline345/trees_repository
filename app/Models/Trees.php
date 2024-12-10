@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Trees extends Model
 {
-    protected $arboles = 'arboles';   
+    protected $table = 'arboles';   
     protected $fillable = [
         'especie',
         'nombre_cientifico',
