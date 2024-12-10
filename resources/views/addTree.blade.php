@@ -33,15 +33,22 @@
                     </div>
                 </div>
                 <div class="row g-3 mb-3">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <label for="tamaño" class="form-label fw-bold">Tamaño</label>
                         <input type="text" class="form-control shadow-sm" id="tamaño" name="tamaño" placeholder="Ej. 2 metros" required>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <label for="ubicacion_geografica" class="form-label fw-bold">Ubicación Geográfica</label>
                         <input type="text" class="form-control shadow-sm" id="ubicacion_geografica" name="ubicacion_geografica" placeholder="Ej. Oaxaca" required>
                     </div>
-                    <div class="col-md-4">
+                    
+                </div>
+                <div class="row g-3 mb-3">
+                    <div class="col-md-6">
+                        <label for="precio" class="form-label fw-bold">Precio</label>
+                        <input type="text" class="form-control shadow-sm" id="precio" name="precio" placeholder="Ej. 15000" required>
+                    </div>
+                    <div class="col-md-6">
                         <label for="estado" class="form-label fw-bold">Estado</label>
                         <select id="estado" name="estado" class="form-select shadow-sm">
                             <option value="Disponible">Disponible</option>
@@ -49,10 +56,12 @@
                         </select>
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label for="foto" class="form-label fw-bold">Foto (Opcional)</label>
-                    <input type="file" class="form-control shadow-sm" id="foto" name="foto" accept="image/*">
-                    <small class="form-text text-muted">Formatos soportados: JPG, PNG. Tamaño máximo: 2MB.</small>
+                <div class="row g-3 mb-3">
+                    <div class="col-md-4">
+                        <label for="foto" class="form-label fw-bold">Foto</label>
+                        <input type="file" class="form-control shadow-sm" id="foto" name="foto" accept="image/*">
+                        <small class="form-text text-muted">Formatos soportados: JPG, PNG. Tamaño máximo: 2MB.</small>
+                    </div>
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary btn-lg shadow-sm">

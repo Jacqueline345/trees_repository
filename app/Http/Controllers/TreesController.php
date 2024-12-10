@@ -33,8 +33,9 @@ class TreesController extends Controller
             'nombre_cientifico' => 'required|string|max:255',
             'tamaño' => 'required|string|max:255',
             'ubicacion_geografica' => 'required|string|max:255',
+            'precio' => 'required|string|max:255',
             'estado' => 'required|in:Disponible,Vendido',
-            //'foto' => 'nullable|image|max:2048',
+            'foto' => 'nullable|image|max:2048',
         ]);
 
         // Crear un nuevo árbol
@@ -43,13 +44,14 @@ class TreesController extends Controller
         $tree->nombre_cientifico = $request->input('nombre_cientifico');
         $tree->tamaño = $request->input('tamaño');
         $tree->ubicacion_geografica = $request->input('ubicacion_geografica');
+        $tree->precio = $request->input('precio');
         $tree->estado = $request->input('estado');
 
-        // Manejar la subida de la foto
-        //if ($request->hasFile('foto')) {
-       //     $path = $request->file('foto')->store('public/fotos');
-       //     $tree->foto = $path;
-       // }
+        //Manejar la subida de la foto
+        if ($request->hasFile('foto')) {
+            $path = $request->file('foto')->store('public/fotos');
+            $tree->foto = $path;
+        }
 
         $tree->save(); // Guarda en la base de datos
 

@@ -18,6 +18,7 @@ class AuthController extends Controller
         return view("/auth/register");
     }
     public function registrar(Request $request){
+        
         $item = new User();
         $item->name = $request->name;
         $item->lastname = $request->lastname;
@@ -26,6 +27,7 @@ class AuthController extends Controller
         $item->address = $request->address;
         $item->country = $request->country;
         $item->password = Hash::make($request->password);
+        $item->role = $request->role;
         $item->save();
         return to_route('login');
 
