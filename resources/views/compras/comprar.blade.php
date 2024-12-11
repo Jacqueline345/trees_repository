@@ -63,7 +63,7 @@
             <div class="form-group text-center">
                 <label for="foto">Foto</label>
                 @if (isset($arbol->foto) && $arbol->foto)
-                    <img id="foto" class="img-fluid rounded shadow mt-2" src="{{ asset($arbol->foto) }}"
+                     <img id="foto" class="img-fluid rounded shadow mt-2" src="{{ asset($arbol->foto) }}"
                         alt="Foto del árbol" required>
                 @else
                     <p class="text-muted">No hay foto disponible</p>

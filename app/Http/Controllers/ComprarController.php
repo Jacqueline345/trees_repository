@@ -23,6 +23,12 @@ class ComprarController extends Controller
     {
         $userId = Auth::id();
 
+        $arbol = Trees::find($request->id); // Usa el ID enviado en el request
+
+        if (!$arbol) {
+            return redirect()->back()->with('error', 'El árbol especificado no existe.');
+        }
+
         $compra = new Compra();
         $compra->user_id = $userId;
         $compra->especie = $request->especie;
@@ -31,13 +37,22 @@ class ComprarController extends Controller
         $compra->ubicacion_geografica = $request->ubicacion_geografica;
         $compra->estado = $request->estado;
         $compra->precio = $request->precio;
-        $compra->foto = $request->foto;
+
+        if ($request->hasFile('foto')) {
+            // Guarda la imagen en el almacenamiento
+            $path = $request->file('foto')->store('public/fotos');
+            $relativePath = str_replace('public/', 'storage/', $path); // Ajusta la ruta para acceso público
+            $compra->foto = $relativePath;
+        } elseif (!empty($arbol->foto)) {
+            // Reutiliza la imagen del árbol si ya existe
+            $compra->foto = $arbol->foto;
+        }
 
         DB::table('arboles')
             ->where('id', $request->id) // ID enviado desde el formulario
             ->update(['estado' => 'Vendido']); // Cambiar el estado a 'Vendido'
 
-            $compra->save();
+        $compra->save();
 
 
         return to_route('trees');
