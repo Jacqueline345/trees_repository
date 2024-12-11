@@ -80,9 +80,8 @@ class AuthController extends Controller
         $compras = Auth::user()->compras;
         return view ('/compras/mis_compras', compact('mis_compras'));
     }
-
-    public function adminDashboard(){
-        return view('admin/adminDashboard');
+    public function verUser(){
+        
     }
     
 }

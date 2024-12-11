@@ -50,7 +50,7 @@
             <div class="col-md-4 mb-3">
                 <div class="card bg-info shadow-sm h-100">
                     <div class="card-body">
-                        <h5 class="card-title">Amigos Registrados</h5>
+                        <a href="{{route('amigos.index')}}"><h5 class="card-title">Amigos Registrados</h5></a>
                         <p class="card-text display-4"><strong>{{$friendsCount}}</strong></p>
                     </div>
                 </div>
