@@ -43,4 +43,9 @@ Route::middleware("auth")->group(function(){
     Route::get('/amigos/{id}', [App\Http\Controllers\AmigoCpntroller::class, 'show'])->name('amigos.show');
     Route::get('/compras/{id}/edit', [App\Http\Controllers\AmigoCpntroller::class, 'editCompra'])->name('compras.edit');
     Route::post('/compras/{id}', [App\Http\Controllers\AmigoCpntroller::class, 'updateCompra'])->name('compras.update');
+    Route::get('/trees/{id}/edit', [App\Http\Controllers\TreesController::class, 'edit'])->name('trees.edit');
+    Route::get('/trees/{id}/edit', [App\Http\Controllers\TreesController::class, 'edit'])->name('trees.edit');
+    Route::delete('/trees/{id}', [App\Http\Controllers\TreesController::class, 'destroy'])->name('trees.destroy');
+    Route::post('/trees/{id}', [App\Http\Controllers\TreesController::class, 'update'])->name('trees.update');
+
 });

@@ -6,7 +6,7 @@
         <h2 class="mb-0">Editar Árbol</h2>
     </div>
     <div class="card-body">
-        <form action="{{ route('trees.edit', $tree->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('trees.update', $tree->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row g-3 mb-3">
                 <div class="col-md-6">

@@ -68,6 +68,35 @@ class TreesController extends Controller
         }
         return view('trees.editTree', compact('tree'));//pasa los datos al formulario 
     }
+    public function update(Request $request)
+    {
+        // Encuentra el registro usando Eloquent
+        $trees = Trees::find($request->id);
+
+        // Verifica si la compra existe
+        if (!$trees) {
+            return redirect()->back()->with('error', 'Compra no encontrada.');
+        }
+
+        $trees->especie = $request->especie;
+        $trees->nombre_cientifico = $request->nombre_cientifico;
+        $trees->tamaño = $request->tamaño;
+        $trees->ubicacion_geografica = $request->ubicacion_geografica;
+        $trees->precio = $request->precio;
+        $trees->estado = $request->estado;
+        if ($request->hasFile('foto')) {
+            $path = $request->file('foto')->store('public/fotos');
+            $relativePath = str_replace('public/', 'storage/', $path); // Ajusta la ruta para acceso público
+            $trees->foto = $relativePath;
+        }
+
+        // Guarda los cambios
+        $trees->save();
+
+        // Redirige a la ruta 'operador'
+        return to_route('dashboard');
+
+    }
     /**
      * Metodo para eliminar el arbol
      */
