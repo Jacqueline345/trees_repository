@@ -36,7 +36,7 @@
                     <a href="{{route('dashboard')}}" class="nav-link">Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('dashboard')}}" class="nav-link">Administración de Usuarios</a>
+                    <a href="{{route('manageUsers')}}" class="nav-link">Administración de Usuarios</a>
                 </li>
             </ul>
         </div>

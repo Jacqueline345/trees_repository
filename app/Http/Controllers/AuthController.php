@@ -84,5 +84,4 @@ class AuthController extends Controller
     public function adminDashboard(){
         return view('admin/adminDashboard');
     }
-    
 }
