@@ -50,8 +50,3 @@ Route::middleware("auth")->group(function(){
     Route::get('/Historial/actualiza/{id}', [ActualizaController::class, 'mostrarActualizacion'])->name('Historial.actualiza');
     Route::post('/store', [ActualizaController::class, 'store'])->name('store');
 });
-
-Route::middleware("auth:admin")->group(function(){
-    Route::get('/adminDashboard', [App\Http\Controllers\AdminController::class, 'adminDashboard'])->name('adminDashboard');
-});
-

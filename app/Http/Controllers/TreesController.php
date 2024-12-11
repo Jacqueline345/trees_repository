@@ -50,7 +50,8 @@ class TreesController extends Controller
         //Manejar la subida de la foto
         if ($request->hasFile('foto')) {
             $path = $request->file('foto')->store('public/fotos');
-            $tree->foto = $path;
+            $relativePath = str_replace('public/', 'storage/', $path); // Ajusta la ruta para acceso público
+            $tree->foto = $relativePath;
         }
 
         $tree->save(); // Guarda en la base de datos

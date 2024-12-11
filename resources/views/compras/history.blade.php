@@ -30,7 +30,8 @@
                             <td> {{$compras->id }} </td>
                             <td>{{ $compras->tamaño }}</td>
                             <td>{{ $compras->updated_at }}</td>
-                            <td><img src="{{ $compras->foto }}" alt="Foto" width="100"></td>
+                            <td><img src="{{ asset($compras->foto) }}" alt="foto" style="max-width: 100%; height: auto;">
+                            </td>
                         </tr>
                 </tbody>
             </table>
