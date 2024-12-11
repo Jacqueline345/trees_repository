@@ -79,8 +79,7 @@
 
         <!-- Botón para ver amigos y añadir un nuevo árbol -->
         <div class="text-center my-4">
-            <a href="#" class="btn btn-warning btn-lg">Ver Amigos Registrados</a>
-            <a href="{{route('addTree')}}" class="btn btn-info btn-lg">Agregar Nuevo Árbol</a>
+            <a href="{{route('addTree')}}" class="btn btn-warning btn-lg">Agregar Nuevo Árbol</a>
         </div>
 
         <!-- Tabla de Árboles con Estado -->

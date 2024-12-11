@@ -61,33 +61,30 @@ class UserController extends Controller
         return view('users.createUsers'); // Asegúrate de tener la vista `users.create` que contiene el formulario
     }
 
-    // Almacenar un nuevo usuario
     public function store(Request $request)
     {
-        // Validar la entrada del usuario
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'lastname' => 'required|string|max:255',
-            'phone_number' => 'required|string|max:15',
-            'email' => 'required|email|max:255|unique:users,email',
+            'phone_number' => 'required|string|max:50',
+            'email' => 'required|string|email|max:255|unique:users',
             'address' => 'required|string|max:255',
-            'country' => 'required|string|max:255',
-            'password' => 'required|string|min:8|confirmed', // 'confirmed' asegura que los campos de contraseñas coincidan
-            'role' => 'required|string|in:operador,admin',
+            'country' => 'required|string|max:50',
+            'password' => 'required|string|min:8|confirmed',
+            'role' => 'required|string|max:20',
         ]);
 
-        // Crear el nuevo usuario
-        User::create([
-            'name' => $validated['name'],
-            'lastname' => $validated['lastname'],
-            'phone_number' => $validated['phone_number'],
-            'email' => $validated['email'],
-            'address' => $validated['address'],
-            'country' => $validated['country'],
-            'password' => bcrypt($validated['password']),
-            'role' => $validated['role'],
-        ]);
+        $item = new User();
+        $item->name = $validated['name'];
+        $item->lastname = $validated['lastname'];
+        $item->phone_number = $validated['phone_number'];
+        $item->email = $validated['email'];
+        $item->address = $validated['address'];
+        $item->country = $validated['country'];
+        $item->password = Hash::make($validated['password']);
+        $item->role = $validated['role'];
+        $item->save();
 
-        return redirect()->route('users.manageUsers')->with('success', 'Usuario creado con éxito');
+        return to_route('users.manageUsers')->with('success', 'Usuario registrado con éxito');
     }
 }

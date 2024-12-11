@@ -54,8 +54,11 @@
                 </select>
             </div>
 
-            <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-success">Crear Usuario</button>
+            <div class="text-center">
+                <button type="submit" class="btn btn-success btn-lg shadow-sm">Crear Usuario</button>
+                <a href="{{route('manageUsers')}}" type="submit" class="btn btn-secondary btn-lg shadow-sm">
+                        <i class="bi bi-x-circle"></i> Cancelar
+                </a>
             </div>
         </form>
     </div>
