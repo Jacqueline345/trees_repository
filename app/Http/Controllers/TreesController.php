@@ -68,6 +68,16 @@ class TreesController extends Controller
         }
         return view('trees.editTree', compact('tree'));//pasa los datos al formulario 
     }
+    /**
+     * Metodo para eliminar el arbol
+     */
+    public function destroy($id){
+        $tree = Trees::findOrFail($id); // Encuentra el árbol por ID
 
-    
+        // Elimina el árbol
+        $tree->delete();
+
+        // Redirige con un mensaje de éxito
+        return redirect()->route('dashboard')->with('success', 'Árbol eliminado exitosamente');
+    }
 }

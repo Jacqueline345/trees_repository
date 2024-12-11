@@ -26,6 +26,7 @@ Route::middleware("auth")->group(function(){
     Route::get('/addTree', [App\Http\Controllers\TreesController::class, 'addTree'])->name('addTree');
     Route::post('/storeTree', [App\Http\Controllers\TreesController::class, 'storeTree'])->name('storeTree');
     Route::get('/trees/edit/{id}', [App\Http\Controllers\TreesController::class, 'edit'])->name('trees.edit');
+    Route::delete('trees/{id}', [App\Http\Controllers\TreesController::class, 'destroy'])->name('trees.destroy');
 
     Route::get('/comprar/{id}',[App\Http\Controllers\ComprarController::class, 'mostrarCompra'])->name('mostrarCompra');
     Route::post('/comprar',[App\Http\Controllers\ComprarController::class,'comprar'])->name('comprar');
