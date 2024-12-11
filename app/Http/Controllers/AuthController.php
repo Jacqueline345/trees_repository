@@ -83,5 +83,4 @@ class AuthController extends Controller
     public function verUser(){
         
     }
-    
 }

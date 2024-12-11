@@ -39,6 +39,13 @@ Route::middleware("auth")->group(function(){
     Route::post('/storeTree', [App\Http\Controllers\TreesController::class, 'storeTree'])->name('storeTree');
     Route::get('/Historial/actualiza/{id}', [ActualizaController::class, 'mostrarActualizacion'])->name('Historial.actualiza');
     Route::post('/store', [ActualizaController::class, 'store'])->name('store');
+
+    Route::get('users/manage', [App\Http\Controllers\UserController::class, 'manage'])->name('manageUsers');
+    Route::get('users/{id}/edit', [App\Http\Controllers\UserController::class, 'edit'])->name('users.edit');
+    Route::post('users/{id}/update', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
+    Route::delete('users/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.destroy');
+    Route::get('/users/createUsers', [App\Http\Controllers\UserController::class, 'create'])->name('users.createUsers');
+    Route::post('/users', [App\Http\Controllers\UserController::class, 'store'])->name('users.store');
     Route::get('/amigos', [App\Http\Controllers\AmigoCpntroller::class, 'index'])->name('amigos.index');
     Route::get('/amigos/{id}', [App\Http\Controllers\AmigoCpntroller::class, 'show'])->name('amigos.show');
     Route::get('/compras/{id}/edit', [App\Http\Controllers\AmigoCpntroller::class, 'editCompra'])->name('compras.edit');
