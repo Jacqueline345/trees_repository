@@ -14,6 +14,10 @@
                     <input type="text" class="form-control shadow-sm" id="name" name="name" value="{{ $user->name }}" required>
                 </div>
                 <div class="col-md-6">
+                    <label for="name" class="form-label fw-bold">Lastname</label>
+                    <input type="text" class="form-control shadow-sm" id="lastname" name="name" value="{{ $user->lastname }}" required>
+                </div>
+                <div class="col-md-6">
                     <label for="email" class="form-label fw-bold">Correo Electrónico</label>
                     <input type="email" class="form-control shadow-sm" id="email" name="email" value="{{ $user->email }}" required>
                 </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -25,34 +26,28 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
 
-        return redirect()->route('users.manageUsers')->with('success', 'Usuario eliminado exitosamente');
+        return redirect()->route('manageUsers')->with('success', 'Usuario eliminado exitosamente');
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        // Validar los datos del formulario
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'lastname' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'phone_number' => 'nullable|string|max:15',
-            'address' => 'nullable|string|max:255',
-        ]);
+        $user = User::find($request->id);
 
-        // Obtener el usuario
-        $user = User::findOrFail($id);
+        // Verifica si la compra existe
+        if (!$user) {
+            return redirect()->back()->with('error', 'Usuario no encontrado.');
+        }
 
-        // Actualizar los datos del usuario
-        $user->update([
-            'name' => $request->name,
-            'lastname' => $request->lastname,
-            'email' => $request->email,
-            'phone_number' => $request->phone_number,
-            'address' => $request->address,
-        ]);
+        $user->name = $request->name;
+        $user->lastname = $request->lastname;
+        $user->email = $request->email;
+        $user->phone_number = $request->phone_number;
+        $user->address = $request->address;
+        // Guarda los cambios
+        $user->save();
 
         // Redirigir a la página de administración de usuarios
-        return redirect()->route('users.manageUsers')->with('success', 'Usuario actualizado exitosamente');
+        return redirect()->route('manageUsers')->with('success', 'Usuario actualizado exitosamente');
     }
 
     // Mostrar el formulario de creación de usuario
@@ -63,28 +58,17 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'lastname' => 'required|string|max:255',
-            'phone_number' => 'required|string|max:50',
-            'email' => 'required|string|email|max:255|unique:users',
-            'address' => 'required|string|max:255',
-            'country' => 'required|string|max:50',
-            'password' => 'required|string|min:8|confirmed',
-            'role' => 'required|string|max:20',
-        ]);
-
         $item = new User();
-        $item->name = $validated['name'];
-        $item->lastname = $validated['lastname'];
-        $item->phone_number = $validated['phone_number'];
-        $item->email = $validated['email'];
-        $item->address = $validated['address'];
-        $item->country = $validated['country'];
-        $item->password = Hash::make($validated['password']);
-        $item->role = $validated['role'];
+        $item->name = $request->name;
+        $item->lastname = $request->lastname;
+        $item->phone_number = $request->phone_number;
+        $item->email = $request->email;
+        $item->address = $request->address;
+        $item->country = $request->country;
+        $item->password = Hash::make($request->password);
+        $item->role = $request->role;
         $item->save();
 
-        return to_route('users.manageUsers')->with('success', 'Usuario registrado con éxito');
+        return to_route('manageUsers')->with('success', 'Usuario registrado con éxito');
     }
 }
