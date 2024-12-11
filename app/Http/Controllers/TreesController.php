@@ -57,4 +57,16 @@ class TreesController extends Controller
 
         return redirect()->route('dashboard')->with('success', 'Árbol agregado exitosamente.');
     }
+    /** 
+     * Métof+do para mostrar el formulario de editar
+    */
+    public function edit($id){
+        $tree = Trees::findOrFail($id);//busca el árbol por ID
+        if (!$tree) {
+            return redirect()->route('dashboard')->with('error', 'Árbol no encontrado');
+        }
+        return view('trees.editTree', compact('tree'));//pasa los datos al formulario 
+    }
+
+    
 }

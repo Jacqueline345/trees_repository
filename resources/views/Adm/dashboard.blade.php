@@ -113,7 +113,7 @@
                                 <td> {{$arbol->precio}} </td>
                                 <td> {{$arbol->foto}} </td>
                                 <td>
-                                    <a href="{{route('mostrarCompra', $arbol->id)}}" data-tip="comprar" class="btn btn-warning btn-sm">Editar</a>
+                                    <a href="{{route('trees.edit', $arbol->id)}}" data-tip="editar" class="btn btn-warning btn-sm">Editar</a>
                                     <a href="{{route('mostrarCompra', $arbol->id)}}" data-tip="comprar" class="btn btn-danger btn-sm">Eliminar</a>
                                 </td>
                             </tr>
