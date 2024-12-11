@@ -113,8 +113,13 @@
                                 <td> {{$arbol->precio}} </td>
                                 <td> {{$arbol->foto}} </td>
                                 <td>
-                                    <a href="{{route('mostrarCompra', $arbol->id)}}" data-tip="comprar" class="btn btn-warning btn-sm">Editar</a>
-                                    <a href="{{route('mostrarCompra', $arbol->id)}}" data-tip="comprar" class="btn btn-danger btn-sm">Eliminar</a>
+                                    <a href="{{route('trees.edit', $arbol->id)}}" data-tip="editar" class="btn btn-warning btn-sm">Editar</a>
+                                    <!-- Formulario de eliminación -->
+                                    <form action="{{ route('trees.destroy', $arbol->id) }}" method="POST" style="display:inline;">
+                                        @csrf
+                                        @method('DELETE') <!-- Esto indica que la solicitud es de tipo DELETE -->
+                                        <button type="submit" class="btn btn-danger btn-sm" data-tip="eliminar">Eliminar</button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
